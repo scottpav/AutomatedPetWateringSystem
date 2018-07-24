@@ -1,2 +1,2 @@
-# Condensate-Pump
+# CondensatePump
 NodeMCU based water level sensor with email alerts and automatic pump control.
