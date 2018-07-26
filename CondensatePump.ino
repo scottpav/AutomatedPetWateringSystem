@@ -85,16 +85,19 @@ void loop(){
     // read the state of the switch value:
     switchState = digitalRead(SWITCH_PIN);
     // check if the switch is tripped.
-      if (switchState == HIGH) {
-        // water level is low, pump off
-        digitalWrite(RELAY_PIN, HIGH);
-        delay(1000);
-      } else {
-        Serial.print("Switch is tripped.");
+      if (switchState == LOW) {
+        Serial.print("Switch is open.");
+        // water level is low, pump on
+        Serial.print("Turning on pump.");
         digitalWrite(RELAY_PIN, LOW);
         //Send an email alert
         sendAlert();
-        // turn the pump on for 3 minutes
-        delay(180000);
+        delay(1000);
+      } else {
+        Serial.print("Switch is closed.");
+        // let the pump run for 30 more seconds to account for switch height
+        delay(30000);
+        Serial.print("Turning off pump.");
+        digitalWrite(RELAY_PIN, HIGH);
       }
   }
