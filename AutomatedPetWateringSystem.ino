@@ -58,14 +58,13 @@ void Awaits()
         }
     }
 }
-
 void sendAlert(){
    connection_state = WiFiConnect();
     if(!connection_state)  // if not connected to WIFI
         Awaits();          // constantly trying to connect
     Gsender *gsender = Gsender::Instance();    // Getting pointer to class instance
     String subject = "Upstairs HVAC!";
-    if(gsender->Subject(subject)->Send("YOUR_ALERT_EMAIL@gmail.com", "The upstairs condensate pan is full. Pumping has begun. Please address ASAP.")) {
+    if(gsender->Subject(subject)->Send("YOUR_ALERT_EMAIL_ADDRESS@GMAIL.COM", "The dogs water was low. A refill cycle was initiated. Please check the resivor ASAP.")) {
         Serial.println("Message send.");
     } else {
         Serial.print("Error sending message: ");
