@@ -63,7 +63,7 @@ void sendAlert(){
     if(!connection_state)  // if not connected to WIFI
         Awaits();          // constantly trying to connect
     Gsender *gsender = Gsender::Instance();    // Getting pointer to class instance
-    String subject = "Upstairs HVAC!";
+    String subject = "Water Supply";
     if(gsender->Subject(subject)->Send("YOUR_ALERT_EMAIL_ADDRESS@GMAIL.COM", "The dogs water was low. A refill cycle was initiated. Please check the resivor ASAP.")) {
         Serial.println("Message send.");
     } else {
@@ -84,7 +84,7 @@ void loop(){
     // read the state of the switch value:
     switchState = digitalRead(SWITCH_PIN);
     // check if the switch is tripped.
-      if (switchState == LOW) {
+      if (switchState == HIGH) {
         Serial.print("Switch is open.");
         // water level is low, pump on
         Serial.print("Turning on pump.");
