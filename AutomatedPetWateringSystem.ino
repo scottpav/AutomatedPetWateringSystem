@@ -84,7 +84,7 @@ void loop(){
     // read the state of the switch value:
     switchState = digitalRead(SWITCH_PIN);
     // check if the switch is tripped.
-      if (switchState == HIGH) {
+      if (switchState == LOW) {
         Serial.print("Switch is open.");
         // water level is low, pump on
         Serial.print("Turning on pump.");
